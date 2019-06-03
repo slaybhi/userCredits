@@ -1,12 +1,18 @@
 <% include  partials/header.ejs %>
 <!-- <script src="select.js" type="text/script"> -->
-
-
+    
+    <header class="jumbotron">
+    
+        <h1  class="text-center font-weight-bold">Select the user you want to send credits to:</h1>
+    
+    </header>
+    <div class="list-group container" style="width: 500px">
     <% users.forEach(function(users){ %>
-    <a href="/user/<%= users._id %>/change" id="creditfn"> 
-        <li> <%= users.name %> </li>
+       
+    <a href="/user/<%= users._id %>/change" id="creditfn" class="list-group-item "> 
+        <li  > <%= users.name %> </li>
         
    <% }) %> 
 </a>
-
+</div>
 <% include partials/footer.ejs %>

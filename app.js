@@ -18,6 +18,7 @@ mongoose.set('useFindAndModify', false);
 
 //app.use(bodyParser.urlencoded({extended:true}));
 
+
 app.set("view engine","ejs");
 
 app.get('/',function(req,res){
@@ -82,6 +83,7 @@ app.get("/user/:id/change",function(req,res){
             console.log(err);
         }
         else{
+            
             credit=Number(founduser.credit);
             
            
@@ -95,10 +97,10 @@ app.get("/user/:id/change",function(req,res){
     
 
 
-    console.log(credit,amt,addamt,subamt,deletecredit,idtodelete);
+    
 
     //Addition
-
+if(req.params.id != idtodelete){
     users.findByIdAndUpdate(req.params.id,{$set: {credit:addamt} },function(err,user){
         if(err){
             console.log(err);
@@ -107,20 +109,17 @@ app.get("/user/:id/change",function(req,res){
         users.findByIdAndUpdate(idtodelete,{$set: {credit:subamt}},function(err,users){
             if(err){
                 console.log(idtodelete)
-               // console.log(err);
+               
             }
         })
         res.redirect("/user");
     }
     })
-
-    // users.update({_id:req.params.id},{ $set: {credit:100},function(sum){
-    // console.log(sum);
-    
-    // }});
-
-
-    })
+}
+else{
+res.redirect("/user");
+      }
+      })
     
   
 
