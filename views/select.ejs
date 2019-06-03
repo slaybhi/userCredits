@@ -1,0 +1,12 @@
+<% include  partials/header.ejs %>
+<!-- <script src="select.js" type="text/script"> -->
+
+
+    <% users.forEach(function(users){ %>
+    <a href="/user/<%= users._id %>/change" id="creditfn"> 
+        <li> <%= users.name %> </li>
+        
+   <% }) %> 
+</a>
+
+<% include partials/footer.ejs %>

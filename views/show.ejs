@@ -1,17 +1,18 @@
 <% include  partials/header.ejs %>
 <div style="margin: auto;width: 50%;border: 3px solid rgb(37, 149, 214);padding: 10px; text-align: center">
 <img src="https://bootdey.com/img/Content/user_1.jpg" >
-<p class="user-link" style="text-transform: uppercase; letter-spacing: 2px"><b> <%= users.name %> </b></p>
+<p class="user-link" style="text-transform: uppercase; letter-spacing: 2px"><b> <%= users.name %> <%= users.credit %>  </b></p>
     
 
 
 
-<form action="" method="POST">
+<form action="/credit" method="POST">
     <div>
         <label for="name">The amount of credits you want to transfer</label>
-        <input type="text" name="partridge" id="partridge" value="1">
+        <hr>
+        <input type="text" name="credit"  value="1">
     </div>
-    <input type="submit" class="btn btn-primary" value="Submit" id="submit">
+    <input type="submit" class="btn btn-primary"   value="Submit" id="submit">
 </form>
 
 
