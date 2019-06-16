@@ -14,9 +14,66 @@ var userSchema = new mongoose.Schema({
 var users = mongoose.model("users",userSchema);
 mongoose.set('useFindAndModify', false);
 
+var ret = users.find({name:"abhijith"},function(err,res){
+    if(!res.length){
+        users.create({
+            name:"abhijith",
+            email:"abhijith@gmail.com",
+            credit:150
+        },function(err,users){
+            if(err){    console.log(err)}
+           // else {  console.log(users);}
+        });
+        users.create({
+            name:"rawn",
+            email:"rawn@gmail.com",
+            credit:100
+        },function(err,users){
+            if(err){    console.log(err)}
+            //else {  console.log(users);}
+        });
+        users.create({
+            name:"shawn",
+            email:"shawn@gmail.com",
+            credit:100
+        },function(err,users){
+            if(err){    console.log(err)}
+            //else {  console.log(users);}
+        });
+        users.create({
+            name:"shriram",
+            email:"shriram@gmail.com",
+            credit:150
+        },function(err,users){
+            if(err){    console.log(err)}
+            //else {  console.log(users);}
+        });
+        
+        users.create({
+            name:"peter",
+            email:"peter@gmail.com",
+            credit:100
+        },function(err,users){
+            if(err){    console.log(err)}
+            //else {  console.log(users);}
+        });
+        
+        users.create({
+            name:"vaishnav",
+            email:"vaishnav@gmail.com",
+            credit:120
+        },function(err,users){
+            if(err){    console.log(err)}
+            //else {  console.log(users);}
+        });
+    }
+   
+});
+
 
 
 //app.use(bodyParser.urlencoded({extended:true}));
+
 
 
 app.set("view engine","ejs");
@@ -38,9 +95,10 @@ app.get('/user',function(req,res){                                      //list a
 
    
 });
-
 app.get("/user/:id",function(req,res){
-    users.findById(req.params.id,function(err,founduser){
+
+users.findByIdAndUpdate(req.params.id,{},function(err,founduser){
+   users
         if(err){
             console.log(err);
         }
@@ -52,6 +110,22 @@ app.get("/user/:id",function(req,res){
        
 
     })
+
+
+
+    // var id = mongoose.Types.ObjectId(req.params.id);
+    // users.findOne({_id: req.params.id },function(err,founduser){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         idtodelete = founduser.id;
+    //         deletecredit= founduser.credit;
+    //         res.render("show",{users:founduser});
+    //     }
+       
+
+    // })
     
    
 })
@@ -101,6 +175,7 @@ app.get("/user/:id/change",function(req,res){
 
     //Addition
 if(req.params.id != idtodelete){
+
     users.findByIdAndUpdate(req.params.id,{$set: {credit:addamt} },function(err,user){
         if(err){
             console.log(err);
