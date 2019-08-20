@@ -1,6 +1,6 @@
 # Task 2 - Credit Management web app
 
-## note : Sorry the task was to deploy the web app on gitlab or github , but as github or gitlab only support deployment of static web apps this was not possible. I tried to deploy it in AWS but was unable to completely deploy mainly because of some bugs in the mongoose update that aws is using and also the lack of time due to examinations which was until 15th June 2019.
+
 
 A simple dynamic website which works on mongodb and expressjs.
 #### Flow:
